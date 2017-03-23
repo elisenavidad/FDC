@@ -1,0 +1,46 @@
+#volDiv {
+    padding-top: 20px;
+}
+
+#volBlue {
+    padding-left: 2em;
+    font-weight: bold;
+    color: lightblue;
+}
+
+#volError {
+    padding-left: 2em;
+    font-weight: bold;
+    color: red;
+}
+
+#app-content-wrapper #app-content #app-actions {
+    display: none;
+}
+
+#inner-app-content {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+}
+
+#app-content-wrapper {
+    overflow: hidden;
+}
+
+#byu-logo-container {
+    float: left;
+    position: absolute;
+    bottom: 8px;
+}
+#byu-logo-container img {
+    float: left;
+    height: 50px;
+    width: 50px;
+}
+#byu-logo-container span {
+    position: relative;
+    top: 25px;
+    margin-left: 10px;
+}

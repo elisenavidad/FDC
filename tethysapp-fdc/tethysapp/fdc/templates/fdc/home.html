@@ -1,0 +1,94 @@
+{% extends "fdc/base.html" %}
+
+{% load staticfiles %}
+
+{% block app_content_wrapper_override %}
+<!-- Modal  -->
+<style>
+  #desc {
+    color: black;
+    font-size:12pt;
+    margin-left:10px;
+  }
+  .sub {
+    font-size:12pt;
+  }
+  .modalNote {
+    color: gray;
+    margin-left:10px;
+  }
+  .modalList {
+    margin:10px;
+    font-size:16pt;
+  }
+</style>
+<div class="modal fade" id="welcome-popup" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Storage Capacity and FDC Application Help Guide</h4>
+      </div>
+      <div class="modal-body">
+        <div id="welcome-info">
+          <div class="line">
+            <p id="desc">This application calculates the storage capacity of a potential reservoir and flow-duration curve given a location at
+              any stream within the Dominican Republic, a curve number and a dam height. Follow the steps below in order to successfully
+              calculate storage capacity and a flow-duration curve.</p>
+          </div>
+          <ol>
+          <li class="modalList">Zoom to location</li>
+          <span class="sub">Zoom into a general region of interest.</span>
+          <li class="modalList">Select point of interest</li>
+          <span class="sub">Click the "Click here to draw point" button to begin selecting a location. Next,
+            click on a stream on the map to select your point of interest.</span>
+          <li class="modalList">Specify dam height</li>
+          <span class="sub">Enter a desired dam height in the text box below "Enter Dam Height (Meters)". The
+          default value is set to 100 meters.</span>
+          <li class="modalList">Specify Curve Number</li>
+          <span class='sub'>Enter a desired curve number in the text below "Curve Number".  The default value is set to 80.</span>
+          <li class="modalList">Calculate storage capacity</li>
+          <span class="sub">Click the "Submit" button to begin calculating storage capacity. </span>
+          <li class="modalList">Review results</li>
+          <span class="sub">After clicking the "Submit" button, the application will produce a total volume  in cubic
+            meters, and draw both a watershed and a reservoir area on the map.  The flow duration curve is found by clicking on the FDC Results button.</span>
+          </ol>
+          <div class="modalNote">
+            <span>
+              Note: Storage capacity will only be calculated if users click within a river stream. Clicking outside a
+              stream will prompt a message asking users to specify a point of interest at least 100 meters within the
+              closest stream.
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div id="byu-logo-container">
+          <span><i>Developed at the BYU Environmental Research Modeling Lab</i></span>
+        </div>
+        <button type="button" class="btn btn-default" id="close-popup" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal -->
+{{block.super}}
+{% endblock %}
+
+{% block app_content %}
+<link rel="stylesheet" href="https://js.arcgis.com/3.16/esri/css/esri.css"/>
+<style>
+  html, body, #mapDiv {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+</style>
+<script src="https://js.arcgis.com/3.16/"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="{% static 'fdc/js/main.js' %}" type="text/javascript"></script>
+<div id="mapDiv"></div>
+{% endblock %}
+
